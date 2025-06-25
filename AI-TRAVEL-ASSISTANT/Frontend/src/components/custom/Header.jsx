@@ -52,7 +52,8 @@ function Header() {
         console.log("USER", response.data);
         localStorage.setItem("user", JSON.stringify(response.data));
         setOpenDialog(false);
-        window.location.reload();
+        // window.location.reload(); // REMOVE THIS LINE
+        // Optionally, you can navigate or update state if needed
       });
   };
 
@@ -82,6 +83,9 @@ function Header() {
                   onClick={() => {
                     googleLogout();
                     localStorage.removeItem('user');
+                    localStorage.removeItem('tripFormData');
+                       localStorage.removeItem('tripPlace');
+
                     navigation('/');
                   }}
                 >
