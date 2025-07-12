@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { getPlaceDetails } from '../../../Service/GlobalApi';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { getPlaceDetails } from "../../../Service/GlobalApi";
 
 const PHOTO_REF_URL =
-  'https://places.googleapis.com/v1/{NAME}/media?maxHeightPx=1000&maxWidthPx=1000&key=' +
+  "https://places.googleapis.com/v1/{NAME}/media?maxHeightPx=1000&maxWidthPx=1000&key=" +
   import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
 function HotelCardItems({ hotel }) {
@@ -24,9 +24,9 @@ function HotelCardItems({ hotel }) {
         const result = await getPlaceDetails(data);
         const photos = result.data?.places?.[0]?.photos;
         if (photos && photos.length > 2 && photos[2].name) {
-          setPhotoUrl(PHOTO_REF_URL.replace('{NAME}', photos[2].name));
+          setPhotoUrl(PHOTO_REF_URL.replace("{NAME}", photos[2].name));
         } else if (photos && photos.length > 0 && photos[0].name) {
-          setPhotoUrl(PHOTO_REF_URL.replace('{NAME}', photos[0].name));
+          setPhotoUrl(PHOTO_REF_URL.replace("{NAME}", photos[0].name));
         } else {
           setPhotoUrl(undefined);
         }
@@ -43,10 +43,15 @@ function HotelCardItems({ hotel }) {
 
   return (
     <Link
-      to={'https://www.google.com/maps/search/?api=1&query=' + hotel.hotelName + ',' + hotel?.address}
-      target='_blank'
+      to={
+        "https://www.google.com/maps/search/?api=1&query=" +
+        hotel.hotelName +
+        "," +
+        hotel?.address
+      }
+      target="_blank"
     >
-      <div className='hover:scale-110 transition-all cursor-pointer'>
+      <div className="hover:scale-110 transition-all cursor-pointer">
         <div className="relative w-full h-[180px]">
           {loading && (
             <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-70 rounded-xl z-10">
@@ -55,7 +60,7 @@ function HotelCardItems({ hotel }) {
             </div>
           )}
           <img
-            src={PhotoUrl }
+            src={PhotoUrl}
             alt={hotel.hotelName}
             className="rounded-xl h-[180px] w-full object-cover"
             onLoad={handleImageLoad}
@@ -63,11 +68,17 @@ function HotelCardItems({ hotel }) {
             style={loading ? { opacity: 0 } : { opacity: 1 }}
           />
         </div>
-        <div className='my-2 flex flex-col gap-2'>
-          <h2 className='font-medium'>{hotel.hotelName}</h2>
-          <h2 className='text-xs text-gray-500'>📍{hotel.address}</h2>
-          <h2 className='text-sm'>💰{hotel.price}</h2>
-          <h2 className='text-sm'> ⭐{hotel.rating}</h2>
+        <div className="my-2 flex flex-col gap-2">
+          <h2 className="font-medium">{hotel.hotelName}</h2>
+          <h2 className="text-xs text-gray-500">📍{hotel.address}</h2>
+          <h2 className="text-sm flex items-center gap-2">
+            💰{hotel.price}
+            {hotel.rating && (
+              <span className="ml-2 flex items-center gap-1 bg-yellow-100 text-yellow-700 rounded-full px-2 py-0.5 text-xs font-semibold">
+                ⭐ {hotel.rating}
+              </span>
+            )}
+          </h2>
         </div>
       </div>
     </Link>
