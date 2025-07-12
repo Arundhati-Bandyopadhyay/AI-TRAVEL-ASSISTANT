@@ -244,29 +244,29 @@ function CreateTrip() {
 
           {/* Travel With */}
           <div>
-            <h2 className="font-medium text-xl my-3">
-              Who do you want to travel with?
-            </h2>
-            <div className="grid grid-cols-3 gap-5 mt-5">
-              {SelectTravelLesList.map((item, index) => (
-                <div
-                  key={index}
-                  onClick={() => handleChange("travelers", item.people)}
-                  className={`p-4 border rounded-lg cursor-pointer ${
-                    formData.travelers === item.people
-                      ? "bg-blue-200 border-black"
-                      : "border-gray-500"
-                  }`}
-                >
-                  <h2 className="text-4xl">{item.icon}</h2>
-                  <h2 className="font-bold text-l">{item.title}</h2>
-                  {formData.travelers === item.people && (
-                    <h2 className="text-gray-500">{item.desc}</h2>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
+  <h2 className="font-medium text-xl my-3">
+    Who do you want to travel with?
+  </h2>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-5">
+    {SelectTravelLesList.map((item, index) => (
+      <div
+        key={index}
+        onClick={() => handleChange("travelers", item.people)}
+        className={`p-4 border rounded-lg cursor-pointer ${
+          formData.travelers === item.people
+            ? "bg-blue-200 border-black"
+            : "border-gray-500"
+        }`}
+      >
+        <h2 className="text-4xl">{item.icon}</h2>
+        <h2 className="font-bold text-l">{item.title}</h2>
+        {formData.travelers === item.people && (
+          <h2 className="text-gray-500">{item.desc}</h2>
+        )}
+      </div>
+    ))}
+  </div>
+</div>
         </div>
 
         {/* Generate Button */}
