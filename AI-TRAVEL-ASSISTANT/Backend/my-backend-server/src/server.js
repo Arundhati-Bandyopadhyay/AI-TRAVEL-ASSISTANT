@@ -6,7 +6,11 @@ import cors from "cors";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:5173", // or "*" for all origins (not recommended for production)
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+}));
 app.use(express.json());
 const PORT = process.env.PORT || 5000;
 
