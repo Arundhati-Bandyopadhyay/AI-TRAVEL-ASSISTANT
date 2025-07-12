@@ -9,7 +9,8 @@ const app = express();
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://ai-travel-assistant-1.onrender.com" // your deployed frontend
+    "https://ai-travel-assistant-1.onrender.com",//
+    "https://ai-travel-assistant.netlify.app" // your deployed frontend
   ], // or "*" for all origins (not recommended for production)
   methods: ["GET", "POST", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
