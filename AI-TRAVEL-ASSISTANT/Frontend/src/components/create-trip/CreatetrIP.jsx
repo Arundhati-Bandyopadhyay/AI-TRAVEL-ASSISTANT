@@ -128,7 +128,7 @@ function CreateTrip() {
         .replace("{travelers}", formData.travelers);
 
       const response = await fetch(
-        "https://ai-travel-assistant-1.onrender.com/api/generate",
+        "https://ai-travel-assistant-55dp.onrender.com /api/generate",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -179,14 +179,20 @@ function CreateTrip() {
       )}
 
       <div className="mx-auto mt-10 max-w-5xl px-4 sm:px-10 md:px-16 lg:px-32">
-        <h2 className="font-bold text-3xl">Tell us your travel preferences 🏕️🏖️</h2>
+        <h2 className="font-bold text-3xl">
+          Tell us your travel preferences 🏕️🏖️
+        </h2>
         <p className="mt-3 text-xl text-gray-500">
-          Just provide some basic information about your tour and our trip planner will generate a customized itinerary based on your preferences.
+          Just provide some basic information about your tour and our trip
+          planner will generate a customized itinerary based on your
+          preferences.
         </p>
 
         <div className="mt-20 flex flex-col gap-10">
           {/* Location */}
-          <h2 className="font-medium text-xl">What is your destination of choice?</h2>
+          <h2 className="font-medium text-xl">
+            What is your destination of choice?
+          </h2>
           <GooglePlacesAutocomplete
             apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
             selectProps={{
@@ -286,11 +292,7 @@ function CreateTrip() {
           <DialogContent className="max-w-md rounded-xl bg-white text-black">
             <DialogHeader>
               <DialogTitle></DialogTitle>
-              <img
-                src="/logo.svg"
-                alt="Login"
-                className="w-20 h-20 mx-auto"
-              />
+              <img src="/logo.svg" alt="Login" className="w-20 h-20 mx-auto" />
               <h2 className="font-bold text-2xl mt-7 text-center">
                 Sign in with Google
               </h2>
