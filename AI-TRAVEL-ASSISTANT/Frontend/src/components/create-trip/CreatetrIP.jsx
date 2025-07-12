@@ -128,7 +128,7 @@ function CreateTrip() {
         .replace("{travelers}", formData.travelers);
 
       const response = await fetch(
-        "https://ai-travel-assistant-55dp.onrender.com /api/generate",
+        "https://ai-travel-assistant-55dp.onrender.com/api/generate",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
